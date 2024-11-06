@@ -1,0 +1,1 @@
+# Sample JSON files to mimic REST API responses
