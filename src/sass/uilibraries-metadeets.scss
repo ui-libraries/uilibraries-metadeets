@@ -187,9 +187,9 @@
 // -- expand details container on page load. hides the button.
 :host(.auto-expanded) {
     
-    #project-details-button {
-        display: none;
-    }
+    // #project-details-button {
+    //     display: none;
+    // }
     #project-details-container {
         display: block;
     }
