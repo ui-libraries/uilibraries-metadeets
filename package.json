@@ -1,7 +1,7 @@
 {
-  "name": "www.lib.uiowa.edu",
+  "name": "basic-gulp-web-workflow",
   "version": "1.0.0",
-  "description": "ayep",
+  "description": "",
   "main": "Gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,7 @@
     "gulp-notify": "^5.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-terser": "^2.1.0",
     "gulp-todo": "^5.4.0",
     "gulp-util": "^1.0.0",
     "sass": "^1.66.1"
@@ -26,8 +27,6 @@
     "gulp-dependents": "^1.0.0",
     "gulp-postcss": "^10.0.0",
     "gulp-size": "^5.0.0",
-    "gulp-watch": "^4.2.4",
-    "node-bourbon": "^4.2.8",
-    "node-neat": "^1.7.2"
+    "gulp-watch": "^4.2.4"
   }
 }

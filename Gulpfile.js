@@ -7,6 +7,7 @@ const cache = require('gulp-cached');
 const dependents = require('gulp-dependents');
 // const size = require('gulp-size');
 const browsersync = require('browser-sync').create();
+const terser = require('gulp-terser');
 
 function stylesTask() {
   const stylesSource = './src/sass/**/*.scss';
@@ -30,6 +31,15 @@ function stylesTask() {
     // .pipe(dest(stylesDest2));
 }
 
+function scriptsTask(){
+  const scriptsSource = './src/js/*.js';
+  const scriptsDest1 = './dist/js/';
+
+  return src(scriptsSource, { sourcemaps: true })
+    .pipe(terser())
+    .pipe(dest(scriptsDest1, { sourcemaps: '.' }));
+}
+
 function browsersyncServe(cb) {
   browsersync.init({
     server: {
@@ -46,11 +56,12 @@ function browsersyncReload(cb) {
 
 function watchTask() {
   watch('./dist/*.html', browsersyncReload);
-  watch(['./src/sass/**/*.scss'], series(stylesTask, browsersyncReload))
+  watch(['./src/js/*.js', './src/js/*.js'], series(stylesTask, scriptsTask, browsersyncReload))
 }
 
 exports.default = series(
   stylesTask, 
+  scriptsTask,
   browsersyncServe, 
   watchTask
 );
