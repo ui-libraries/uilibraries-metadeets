@@ -1,5 +1,4 @@
 const { src, dest, series, watch } = require('gulp');
-
 const sass = require('gulp-sass')(require('sass'));
 const autoPrefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
