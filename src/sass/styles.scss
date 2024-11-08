@@ -49,9 +49,11 @@ main {
 
 
 footer {
-    margin-top: 4rem;
+    margin-top: 2rem;
     background-color: var(--footer-bg-color);
     min-height: 60em;
+    clear: both;
+
 
     .inner-wrapper {
         padding: 1rem 0;

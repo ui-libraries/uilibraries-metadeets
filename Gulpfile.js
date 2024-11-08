@@ -28,7 +28,6 @@ function stylesTask() {
     // .pipe(sizegzip)
     .pipe(sourcemaps.write())
     .pipe(dest(stylesDest1));
-    // .pipe(dest(stylesDest2));
 }
 
 function scriptsTask(){
@@ -56,7 +55,7 @@ function browsersyncReload(cb) {
 
 function watchTask() {
   watch('./dist/*.html', browsersyncReload);
-  watch(['./src/js/*.js', './src/js/*.js'], series(stylesTask, scriptsTask, browsersyncReload))
+  watch(['./src/sass/**/*.scss', './src/js/*.js'], series(stylesTask, scriptsTask, browsersyncReload))
 }
 
 exports.default = series(
