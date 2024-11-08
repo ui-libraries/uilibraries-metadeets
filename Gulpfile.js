@@ -6,7 +6,7 @@ const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const cache = require('gulp-cached');
 const dependents = require('gulp-dependents');
-const size = require('gulp-size');
+// const size = require('gulp-size');
 const browsersync = require('browser-sync').create();
 
 function stylesTask() {
@@ -15,7 +15,7 @@ function stylesTask() {
   // const stylesDest2 = '/Volumes/htdocs/events/css';
 
   // const sizefull = size({ showFiles: true, uncompressed: true });
-  const sizegzip = size({ showFiles: true, gzip: true });
+  // const sizegzip = size({ showFiles: true, gzip: true });
 
   return src(stylesSource)
     .pipe(cache('sasscache'))
@@ -25,7 +25,7 @@ function stylesTask() {
     .pipe(autoPrefixer({ grid: false }))
     .pipe(cleanCSS({ format: 'compress' }))
     // .pipe(sizefull)
-    .pipe(sizegzip)
+    // .pipe(sizegzip)
     .pipe(sourcemaps.write())
     .pipe(dest(stylesDest1));
     // .pipe(dest(stylesDest2));

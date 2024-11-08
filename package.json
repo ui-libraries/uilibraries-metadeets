@@ -11,6 +11,7 @@
   "devDependencies": {
     "browser-sync": "^3.0.3",
     "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-cached": "^1.1.1",
     "gulp-clean-css": "^4.3.0",
     "gulp-notify": "^5.0.0",
@@ -22,13 +23,11 @@
   },
   "dependencies": {
     "breakpoint-sass": "^2.7.1",
-    "gulp-autoprefixer": "^9.0.0",
     "gulp-dependents": "^1.0.0",
     "gulp-postcss": "^10.0.0",
     "gulp-size": "^5.0.0",
     "gulp-watch": "^4.2.4",
     "node-bourbon": "^4.2.8",
-    "node-neat": "^1.7.2",
-    "susy": "^2.2.12"
+    "node-neat": "^1.7.2"
   }
 }
