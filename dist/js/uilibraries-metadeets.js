@@ -2,11 +2,11 @@ const template = document.createElement('template');
 
 template.innerHTML = `
     <link href="/css/uilibraries-metadeets.css" rel="stylesheet" type="text/css">     
-    <div class="project-details">
+    <div class="metadeets">
         <h3 class="mothership-branding">
             <a class="block-iowa" href="https://uiowa.edu/">
-                <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 311.6 90.2" aria-labelledby="project-details-block-iowa">
-                    <title id="project-details-block-iowa">University of Iowa</title>
+                <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 311.6 90.2" aria-labelledby="metadeets-block-iowa">
+                    <title id="metadeets-block-iowa">University of Iowa</title>
                     <path class="block-i" d="M40 18.8h-7.3v52.4H40v19H0v-19h7.3V18.8H0V0h40V18.8z"></path>
                     <path class="block-o" d="M93.8 90.2h-29c-10.5 0-17.4-6.9-17.4-18.2V18.2C47.4 7 54.4 0 64.8 0h29c10.5 0 17.4 7 17.4 18.2V72C111.2 83.2 104.2 90.2 93.8 90.2zM85.6 71.2V18.8H73v52.4H85.6z"></path>
                     <path class="block-w" d="M122.6 18.8h-6.4V0h38v18.9H147l6.5 43.4L167 0h19.2l14.4 62.3 5.2-43.4h-6.6V0h37.5v18.9h-6.2l-11.3 71.4h-30.6l-11.8-53.2 -12.1 53.1h-29.4L122.6 18.8z"></path>
@@ -16,11 +16,11 @@ template.innerHTML = `
             </a>
             <a class="uilibraries-link" href="https://lib.uiowa.edu/">University Libraries</a>
         </h3>
-        <button id="project-details-button" class="project-details__button" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg><slot name="button-text"></slot></button>
-        <div class="project-details__summary">
+        <button id="metadeets-button" class="metadeets__button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg><slot name="button-text"></slot></button>
+        <div class="metadeets__summary">
             <slot name="summary"></slot>
         </div>
-        <div id="project-details-container" class="project-details__container hidden" aria-labelledby="project-details-button">
+        <div id="metadeets-container" class="metadeets__container hidden" aria-labelledby="metadeets-button">
             <slot name="title"></slot>
             <slot name="description"></slot>
             <slot name="acknowledgements"></slot>
@@ -37,32 +37,38 @@ class UILibrariesMetaDetails extends HTMLElement {
         let clone = template.content.cloneNode(true);
         shadowRoot.append(clone);
 
-        // Determine all the attributes included in the component instantiation
-        const projdeetsId = this.getAttribute('projdeets-id') ? this.getAttribute('projdeets-id') : false;
+        const button = shadowRoot.getElementById('metadeets-button');
+        const container = shadowRoot.getElementById('metadeets-container');
+
+        const metadeetsId = this.getAttribute('metadeets-id') ? this.getAttribute('metadeets-id') : false;
+        button.setAttribute('id', 'metadeets-button-' + metadeetsId);
+        container.setAttribute('id', 'metadeets-container-' + metadeetsId);
+
         const buttonText = this.getAttribute('button-text') ? this.getAttribute('button-text') : 'Project details';
+        
+        const containerExpandedOnload = this.classList.contains('auto-expanded');
+        button.setAttribute('aria-expanded', containerExpandedOnload);
+        container.setAttribute('aria-expanded', containerExpandedOnload);
 
-        const button = shadowRoot.getElementById('project-details-button');
-        const container = shadowRoot.getElementById('project-details-container');
-
-        if (projdeetsId) {
+        if (metadeetsId) {
             button.innerHTML = `<slot name="button-text">${buttonText}</slot> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>`;
             button.addEventListener('click', () => {
                 const expanded = button.getAttribute('aria-expanded') === 'true' || false;
                 button.setAttribute('aria-expanded', !expanded);
-                container.classList.toggle('hidden');
+                container.setAttribute('aria-expanded', !expanded);
             });
 
             // Fetch data from the API
-            const data = this.fetchProjectDetails(projdeetsId);
+            const data = this.fetchProjectDetails(metadeetsId);
         } else {
             button.style.display = "none";
         }
     }
 
-    async fetchProjectDetails(projdeetsId) {
+    async fetchProjectDetails(metadeetsId) {
         try {
-            const response = await fetch(`https://www.lib.uiowa.edu/web/wp-json/wp/v2/projdeets/${projdeetsId}`);
-            // const response = await fetch(`/sample-data/${projdeetsId}.json`); // for static demo on GitHub
+            const response = await fetch(`https://www.lib.uiowa.edu/web/wp-json/wp/v2/projdeets/${metadeetsId}`);
+            // const response = await fetch(`/sample-data/${metadeetsId}.json`); // for static demo on GitHub
             const data = await response.json();
           
             // const summarySlot = this.shadowRoot.querySelector('slot[name="summary"]');

@@ -16,7 +16,7 @@
         display: none;
     }
 
-    .project-details {
+    .metadeets {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -60,10 +60,9 @@
         }
     }
 
-    .project-details__button {
+    .metadeets__button {
         display: flex;
         align-items: center;
-        // display: inline-block;
         margin: 0 !important;
         padding: 0.75rem 1rem;
         background-color: var(--button-bg-color);
@@ -95,16 +94,23 @@
         }
     }
 
-    .project-details__summary {
+    .metadeets__summary {
         flex: 1 0 100%;
     }
 
-    .project-details__container {
+    .metadeets__container {
         flex: 1 0 calc(100% - 1rem);
         margin: 0;
         padding: 1rem 0;
         min-height: 4rem;
         color: var(--comp-text-color);
+
+        &[aria-expanded="true"] {
+            display: block;
+        }
+        &[aria-expanded="false"] {
+            display: none;
+        }
     }
 
     // block IOWA
@@ -179,7 +185,7 @@
 // -- hide button (if not neaded). removes access to details container.
 :host(.hide-button) {
     
-    #project-details-button {
+    #metadeets-button {
         display: none;
     }
 }
@@ -187,10 +193,8 @@
 // -- expand details container on page load. hides the button.
 :host(.auto-expanded) {
     
-    // #project-details-button {
-    //     display: none;
+    // Handled in the js.
+    // #metadeets-container {
+    //     display: block;
     // }
-    #project-details-container {
-        display: block;
-    }
 }
