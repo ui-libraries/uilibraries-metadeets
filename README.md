@@ -19,6 +19,24 @@ Description: In the context of the [Studio](https://www.lib.uiowa.edu/studio/), 
 Example:  `<uilibraries-metadeets projdeets-id=2193></uilibraries-metadeets>`
 
 ### Classes that change the look and feel
-`color-scheme-1` ... `color-scheme-5`
+
+#### Five color schemes that adhere to [UI branding](https://brand.uiowa.edu/)
+`class="color-scheme-x"`
+
+Where `x` is [1..5] and 'color-scheme-1` is the default if no color scheme is set.
 
 Example:  `<uilibraries-metadeets projdeets-id=2193 class="color-scheme-4"></uilibraries-metadeets>`
+
+#### No details - just branding. Remove 'projdeets-id' attribute (hides button, also)
+
+Example:  `<uilibraries-metadeets class="color-scheme-4"></uilibraries-metadeets>`
+
+#### Details expanded on page load
+`class="auto-expanded"`
+
+Example:  `<uilibraries-metadeets projdeets-id=2193 class="color-scheme-4" auto-expanded></uilibraries-metadeets>`
+
+#### Hide the button
+`class="hide-button"`
+
+Example:  `<uilibraries-metadeets projdeets-id=2193 class="color-scheme-4" auto-expanded></uilibraries-metadeets>`
