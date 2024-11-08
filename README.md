@@ -11,32 +11,30 @@ In the site, include the web component tag...
 
 `<uilibraries-metadeets></uilibraries-metadeets>`
 
-### Additional attributes for the component tag
-`projdeets-id`
+### Pulling site/project details from JSON file or REST API
+`projdeets-id=xxxx`
 
-Description: In the context of the [Studio](https://www.lib.uiowa.edu/studio/), which project/site details are we pulling from the REST API?
+Where `x` is the id of the project/site details. This example is opinionated and assumes the context of the [Studio](https://www.lib.uiowa.edu/studio/), which project/site details are we pulling from the REST API.
 
 Example:  `<uilibraries-metadeets projdeets-id=2193></uilibraries-metadeets>`
 
-### Classes that change the look and feel
-
-#### Five color schemes that adhere to [UI branding](https://brand.uiowa.edu/)
+### Five color schemes that adhere to [UI branding](https://brand.uiowa.edu/)
 `class="color-scheme-x"`
 
 Where `x` is [1..5] and 'color-scheme-1` is the default if no color scheme is set.
 
 Example:  `<uilibraries-metadeets projdeets-id=2193 class="color-scheme-4"></uilibraries-metadeets>`
 
-#### No details - just branding. Remove 'projdeets-id' attribute (hides button, also)
+### No details - just branding. Remove 'projdeets-id' attribute (hides button, also)
 
 Example:  `<uilibraries-metadeets class="color-scheme-4"></uilibraries-metadeets>`
 
-#### Details expanded on page load
+### Details expanded on page load
 `class="auto-expanded"`
 
 Example:  `<uilibraries-metadeets projdeets-id=2193 class="color-scheme-4" auto-expanded></uilibraries-metadeets>`
 
-#### Hide the button
+### Hide the button (because perhaps auto-expanded with no recourse to close is desired?)
 `class="hide-button"`
 
 Example:  `<uilibraries-metadeets projdeets-id=2193 class="color-scheme-4" auto-expanded></uilibraries-metadeets>`
