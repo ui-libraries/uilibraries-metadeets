@@ -1,7 +1,7 @@
-# UI Libraries site meta-details web component
+# UI Libraries site/project meta-details web component
 This is a web component that can, at a minimum, add University of Iowa Libraries branding to a site (most probably the footer).
 
-## Goals
+## Goals and assumptions
 - This compnent will offer several, minimal branding styles that will connect the site to the [University of Iowa Libraries](https://www.lib.uiowa.edu/).  
 - This compnent can optionally pull data specific to the site/project and include that. 
 - This first iteration was designed for project sites created in WordPress and Omeka by the [Digital Scholarship & Publishing Studio](https://www.lib.uiowa.edu/studio/).
