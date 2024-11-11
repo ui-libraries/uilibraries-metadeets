@@ -6,6 +6,9 @@ This is a web component that can, at a minimum, add University of Iowa Libraries
 - This compnent can optionally pull data specific to the site/project and include that. 
 - This first iteration was designed for project sites created in WordPress and Omeka by the [Digital Scholarship & Publishing Studio](https://www.lib.uiowa.edu/studio/).
 
+## Example
+[https://ui-libraries.github.io/uilibraries-metadeets/](https://ui-libraries.github.io/uilibraries-metadeets/)
+
 ## Usage
 In the site, include the web component tag...
 
