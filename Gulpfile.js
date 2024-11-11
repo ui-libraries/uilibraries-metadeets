@@ -11,7 +11,7 @@ const terser = require('gulp-terser');
 
 function stylesTask() {
   const stylesSource = './src/sass/**/*.scss';
-  const stylesDest1 = './dist/css/';
+  const stylesDest1 = './docs/css/';
   // const stylesDest2 = '/Volumes/htdocs/events/css';
 
   // const sizefull = size({ showFiles: true, uncompressed: true });
@@ -32,7 +32,7 @@ function stylesTask() {
 
 function scriptsTask(){
   const scriptsSource = './src/js/*.js';
-  const scriptsDest1 = './dist/js/';
+  const scriptsDest1 = './docs/js/';
 
   return src(scriptsSource, { sourcemaps: true })
     .pipe(terser())
@@ -42,7 +42,7 @@ function scriptsTask(){
 function browsersyncServe(cb) {
   browsersync.init({
     server: {
-      baseDir: 'dist/'
+      baseDir: 'docs/'
     }    
   });
   cb();
@@ -54,7 +54,7 @@ function browsersyncReload(cb) {
 }
 
 function watchTask() {
-  watch('./dist/*.html', browsersyncReload);
+  watch('./docs/*.html', browsersyncReload);
   watch(['./src/sass/**/*.scss', './src/js/*.js'], series(stylesTask, scriptsTask, browsersyncReload))
 }
 
