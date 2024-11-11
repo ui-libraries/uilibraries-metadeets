@@ -1,7 +1,7 @@
 const template = document.createElement('template');
 
 template.innerHTML = `
-    <link href="/css/uilibraries-metadeets.css" rel="stylesheet" type="text/css">     
+    <link href="/uilibraries-metadeets/css/uilibraries-metadeets.css" rel="stylesheet" type="text/css">     
     <div class="metadeets">
         <h3 class="mothership-branding">
             <a class="block-iowa" href="https://uiowa.edu/">
@@ -69,7 +69,7 @@ class UILibrariesMetaDetails extends HTMLElement {
     async fetchProjectDetails(metadeetsId) {
         try {
             const response = await fetch(`https://www.lib.uiowa.edu/web/wp-json/wp/v2/projdeets/${metadeetsId}`);
-            // const response = await fetch(`/sample-data/${metadeetsId}.json`); // for static demo on GitHub
+            // const response = await fetch(`/ sample-data/${metadeetsId}.json`); // for static demo on GitHub
             const data = await response.json();
           
             // const summarySlot = this.shadowRoot.querySelector('slot[name="summary"]');
